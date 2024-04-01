@@ -117,6 +117,11 @@
           각각의 어플리케이션은 적어도 하나의 module을 지니는데 root module이다. root module은 Nest가 어플리케이션 그래프(Nest가 모듈과 공급자의
           관계 및 의존성을 해결하는데 사용하는 내부 데이터 구조)를 구성하기 위해 사용하는
           시작점이다.
+    - Interceptors
+        - Interceptors 
+            - 인터셉터는 @Injectable() 데코레이터와 함께 사용하는 클래스 주석이다. 또한, NestInterceptor를 구현하는 인터페이스이다.
+        - Basics
+            - 각 인터셉터는 argument가 2개인 intercept() 함수를 구현하고 있다. 
 - 기타
     - 익스프레스와 NestJS 비교
       <img alt="Component_lifecycle_method_flow" src="back/frameworkbackend/nestjs/express_vs_nestjs.png">
