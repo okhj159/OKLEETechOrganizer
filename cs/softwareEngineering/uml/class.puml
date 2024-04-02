@@ -1,0 +1,99 @@
+@startuml
+'https://plantuml.com/class-diagram
+'sample code.
+'todo: 예제 작성 후 png export
+
+title Generalization
+
+'extends
+
+class A {
+}
+
+class B {
+}
+
+A -right-|> B
+
+@enduml
+
+@startuml
+
+title Realization
+
+'implements
+
+class A {
+}
+
+class B {
+}
+
+A .right.|> B
+
+@enduml
+
+
+@startuml
+
+title dependency
+
+'함수의 parameter, return, method 변수로 사용하는 경우
+
+class A {
+}
+
+class B {
+}
+
+A .right.> B
+
+@enduml
+
+@startuml
+
+title association
+
+'매개변수로 쓰이지만 A 인스턴스가 생성될 때 필수적인 요소가 아닌 경우
+
+class A {
+}
+
+class B {
+}
+
+A -right-> B
+
+@enduml
+
+@startuml
+
+title Aggregation
+
+'라이프타임 독립적.
+
+class A {
+}
+
+class B {
+}
+
+A -right-o B
+
+@enduml
+
+@startuml
+
+title composition
+
+'라이프타임 의존적. new 생성자 사용하는 경우
+
+class A {
+}
+
+class B {
+}
+
+A -right-* B
+
+@enduml
