@@ -65,15 +65,19 @@
         - 관계는 총 7가지 종류가 있으나 **집합, 복합 관계의 경우 정의하기 애매하기 때문에 사용하지 않는 추세**이다.
             1. 일반화 관계(Generalization)
                - 부모 클래스와 자식 클래스 간 상속 관계를 나타낸다. 클래스를 실선으로 연결하고 부모 클래스 쪽에 비어있는 삼각형으로 나타낸다.
+               - <img src="softwareEngineering/uml/class_generalization.png">
             2. 실체화 관계(Realization)
                - 인터페이스의 spec(명세, 정의)만 있는 메서드를 오버라이딩하여 구현하는 것이다. 점선과 인테페이스 쪽에 비어있는 삼각형으로 나타낸다.
+               - <img src="softwareEngineering/uml/class_realization.png">
             3. 의존 관계(Dependency)
                - 어떤 클래스가 다른 클래스를 참조하는 경우이다. 점선과 대상 클래스 쪽에 열려있는 화살표로 나타낸다.
                - 참조의 형태는 메서드 내에서 대상 클래스의 객체 생성, 객체 사용, 메서드 호출, 객체 리턴, 매개 변수로 해당 객체를 받는 것 등이다.
+               - <img src="softwareEngineering/uml/class_dependency.png">
             4. 5. 연관 관계(Association), 직접 연관 관계(Directed Association)
                - 일반적인 연관 관계는 실선 하나로 연결한다. 서로 참조할 수 있다.
                - 직접 연관 관계는 실선과 참조 당하는 쪽에 열려있는 화살표로 나타낸다. 방향성으로 참조하는 쪽과 참조 당하는 쪽을 구분할 수 있다.
                - Multiplicty(개수)로 대상 클래스의 가질 수 있는 인스턴스 개수 범위를 나타낸다.
+               - <img src="softwareEngineering/uml/class_association.png">
             6. 집합 관계(Aggregation)
                 - 연관 관계를 더 특수한 경우로 나타낸 것으로, 전체와 부분의 관계를 가진다. 전체(whole)와 부분(part)을 실선으로 연결 후,
                   전체 쪽에 비어있는 다이아몬드로 표기한다.
