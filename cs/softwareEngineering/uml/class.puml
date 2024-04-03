@@ -7,13 +7,23 @@ title Generalization
 
 'extends
 
-class A {
+class Animal {
+    sound: string
+    getSound(): string
 }
 
-class B {
+class Dog {
+    getSound(): string
+    bark(): void
 }
 
-A -right-|> B
+class Cat {
+    getSound(): string
+    meow(): void
+}
+
+Animal<|-- Dog
+Animal <|-- Cat
 
 @enduml
 
@@ -23,46 +33,55 @@ title Realization
 
 'implements
 
-class A {
+interface Delivery {
 }
 
-class B {
+class Return {
+    getDeliveryPolicy()
+    getDeliveryFee()
 }
 
-A .right.|> B
+Delivery <|.. Return
 
 @enduml
 
 
 @startuml
 
-title dependency
+title Dependency
 
 '함수의 parameter, return, method 변수로 사용하는 경우
 
-class A {
+class User {
+    getAuthentification(): Authorization
 }
 
-class B {
+class Authorization {
+    role: Role
+    authorized: boolean
 }
 
-A .right.> B
+User ..> Authorization
 
 @enduml
 
 @startuml
 
-title association
+title Association
 
 '매개변수로 쓰이지만 A 인스턴스가 생성될 때 필수적인 요소가 아닌 경우
 
-class A {
+class User {
+    addresses: List<Address>
 }
 
-class B {
+class Address {
+    address1: String
+    address2: String
+    zipcode: String
 }
 
-A -right-> B
+User --> Address
 
 @enduml
 
@@ -72,13 +91,17 @@ title Aggregation
 
 '라이프타임 독립적.
 
-class A {
+class Car {
 }
 
-class B {
+class Engine {
 }
 
-A -right-o B
+class Wheel {
+}
+
+Car o-- Engine
+Car o-- Wheel
 
 @enduml
 
@@ -88,12 +111,20 @@ title composition
 
 '라이프타임 의존적. new 생성자 사용하는 경우
 
-class A {
+class Ant {
 }
 
-class B {
+class Head {
 }
 
-A -right-* B
+class Body {
+}
+
+class Leg {
+}
+
+Ant *--> Head
+Ant *--> Body
+Ant *--> Leg
 
 @enduml
