@@ -67,11 +67,10 @@
   app.use(bodyParser.json());
   ```
 - EXPRESS에서의 3계층 아키텍처
-  <img alt="Component_lifecycle_method_flow" src="back/frameworkbackend/express/three_layer_architecture.png">
+  <img alt="Component_lifecycle_method_flow" src="frameworkbackend/express/three_layer_architecture.png">
 - 미들웨어
     - 익스프레스에서 미들웨어란 HTTP 요청과 응답 사이에 함수를 추가하여 새로운 기능을 추가하는 것을
       뜻한다.
-<hr />
 
 #### NestJS
 - INRTODUCTION
@@ -124,14 +123,13 @@
             - 각 인터셉터는 argument가 2개인 intercept() 함수를 구현하고 있다. 
 - 기타
     - 익스프레스와 NestJS 비교
-      <img alt="Component_lifecycle_method_flow" src="back/frameworkbackend/nestjs/express_vs_nestjs.png">
+      <img alt="Component_lifecycle_method_flow" src="frameworkbackend/nestjs/express_vs_nestjs.png">
     - NestJS의 핵심 기능으로 의존성 주입을 들 수 있다. 의존성 주입은 모듈 간의 결합도를 낮춰서 코드의
       재사용을 용이하게 한다. 즉, 모듈 내에서의 코드의 응집도는 높여서 모듈의 재사용을 꾀하고 모듈
       간에는 결합도를 낮춰서 다양한 아키텍처에서 활용할 수 있게 해준다. 이를 위한 장치들로 모듈, 가드,
       파이프, 미들웨어, 인터셉터 같은 모듈과 코드의 의존 관계를 구성하는 프로그래밍적 장치들이 있다.
     - NestJS에서는 HTTP 요청을 보통 가드 -> 인터셉터 -> 파이프 -> 컨트롤러 -> 서비스 -> 리포지토리
       순서로 처리한다.
-<hr />
 
 #### SPRING
 - 기타
@@ -150,6 +148,7 @@
                 - 한 번의 요청에 한 번의 인증 처리만 하면 되는데 불필요하게 여러번 중복되어 인증처리를 하게 되는 것이다.
                 - 이런 문제를 해결하기 위해 등장한 것이 모든 서블릿에 일관된 요청을 처리하기 위해 만들어진 OncePerRequestFilter이다.
                 - 이 추상 클래스를 구현한 필터는 사용자의 한 번의 요청 당 딱 한 번만 실행되는 필터를 만들 수 있다.
+
 <hr />
 
 ### NoSQL
