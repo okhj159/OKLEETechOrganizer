@@ -12,6 +12,7 @@
 9. [Type Checkers](#Type-Checkers)
 10. [Server Side Rendering](#Server-Side-Rendering)
 11. [Mobile Applications](#Mobile-Applications)
+12. [Bonus Content](#Bonus-Content)
 
 ### INTERNET
 #### HTTP
@@ -72,6 +73,8 @@
                 - Pragma 헤더
     - 레퍼런스
 
+<hr />
+
 ### HTML
 - SEO Basics
     - search engine optimization : 검색 엔진 최적화
@@ -97,11 +100,15 @@
                 */
               ```
 
+<hr />
+
 ### CSS
 - 반응형 웹
     - 반응형 웹이란 PC, TV, 내비게이션, 스마트 기기 등 기기마다 또는 환경마다 최적화된 웹사이트를 제공해주는 것을 말한다.
     - 예를 들어 화면이 작은 기기에서 반응형 웹으로 제작된 웹사이트를 접속했을 때는 웹사이트의 구조를 작은 화면에 최적화된 구조로
       변경하여 보여주고, 큰 화면을 가진 기기에서는 웹사이트의 구조를 큰 화면에 최적화된 구조로 변경하여 보여준다.
+
+<hr />
 
 ### JavaScript
 - References
@@ -1110,8 +1117,6 @@
             - useFocusEffect
                 - 화면에 포커스가 잡혔을 때 특정 작업을 할 수 있게 하는 Hook이다.
 
-<hr />
-
 #### Swift
 - 애플의 iOS, macOS 드 자사의 제품 개발에 활용하는 프로그래밍 언어
 - 언어적 특성
@@ -1126,6 +1131,7 @@
 
 <hr />
 
+### Bonus Content
 #### Storybook
 - Guides
     - Get started
