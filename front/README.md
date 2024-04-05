@@ -12,6 +12,7 @@
 9. [Type Checkers](#Type-Checkers)
 10. [Server Side Rendering](#Server-Side-Rendering)
 11. [Mobile Applications](#Mobile-Applications)
+12. [Bonus Content](#Bonus-Content)
 
 ### INTERNET
 #### HTTP
@@ -72,6 +73,8 @@
                 - Pragma 헤더
     - 레퍼런스
 
+<hr />
+
 ### HTML
 - SEO Basics
     - search engine optimization : 검색 엔진 최적화
@@ -97,11 +100,15 @@
                 */
               ```
 
+<hr />
+
 ### CSS
 - 반응형 웹
     - 반응형 웹이란 PC, TV, 내비게이션, 스마트 기기 등 기기마다 또는 환경마다 최적화된 웹사이트를 제공해주는 것을 말한다.
     - 예를 들어 화면이 작은 기기에서 반응형 웹으로 제작된 웹사이트를 접속했을 때는 웹사이트의 구조를 작은 화면에 최적화된 구조로
       변경하여 보여주고, 큰 화면을 가진 기기에서는 웹사이트의 구조를 큰 화면에 최적화된 구조로 변경하여 보여준다.
+
+<hr />
 
 ### JavaScript
 - References
@@ -311,211 +318,220 @@
           
           export { add };
           ```
-      - 클래스형 컴포넌트와 함수형 컴포넌트
-          | 기능      | 클래스형 컴포넌트      | 함수형 컴포넌트  |  
-          |---------|----------------|-----------|
-          | state   | 사용 가능          | 사용 불가능    |
-          | 라이프 사이클 | 라이프 사이클 API 사용 | hooks 사용  |
-          | 자원 사용   | 비교적 많이 사용      | 비교적 적게 사용 |
+    - 클래스형 컴포넌트와 함수형 컴포넌트
+        | 기능      | 클래스형 컴포넌트      | 함수형 컴포넌트  |  
+        |---------|----------------|-----------|
+        | state   | 사용 가능          | 사용 불가능    |
+        | 라이프 사이클 | 라이프 사이클 API 사용 | hooks 사용  |
+        | 자원 사용   | 비교적 많이 사용      | 비교적 적게 사용 |
     
-      - JSX 코드는 브라우저에서는 직접 해석할 수 없으므로, 웹팩에 의해 자바스크립트 코드로 변환된다.
-        이때, JSX로 구현된 컴포넌트는 자바스크립트의 객체로 표현된다. 변환된 자바스크립트 코드를
-        브라우저가 읽어서 실행하고 화면을 그리기 시작한다.
-      - 리액트에서 DOM 요소에 스타일을 적용할 떄는 문자열 형태로 넣는 것이 아니라 객체 형태로
-        넣어 주어야 한다. 스타일 이름 중에서 background-color처럼 - 문자가 포함되는 이름이 있으면,
-        하이픈(-) 문자를 없애고 카멜 표기법으로 작성해야 한다.
-      - component
-          - 라이프사이클 메서드 흐름
-            <img alt="Component_lifecycle_method_flow" src="front/framework/react/Component_lifecycle_method_flow.png">
-      - Hooks
-          - 상태 훅
-              - useState
-              - useEffect
-              - useReducer
-                  - userReducer()의 반환값 배열의 첫 번째는 현재 상태, 두 번째는 dispatch 함수이다.
-                    dispatch 함수에 action을 전달함으로써 상태를 업데이트할 수 있다.
-                  - reducer가 현재 상태와 action을 기반으로 다음 상태를 결정한다.
-                    ```
-                    impport {useReducer} from 'react';
+    - JSX 코드는 브라우저에서는 직접 해석할 수 없으므로, 웹팩에 의해 자바스크립트 코드로 변환된다.
+      이때, JSX로 구현된 컴포넌트는 자바스크립트의 객체로 표현된다. 변환된 자바스크립트 코드를
+      브라우저가 읽어서 실행하고 화면을 그리기 시작한다.
+    - 리액트에서 DOM 요소에 스타일을 적용할 떄는 문자열 형태로 넣는 것이 아니라 객체 형태로
+      넣어 주어야 한다. 스타일 이름 중에서 background-color처럼 - 문자가 포함되는 이름이 있으면,
+      하이픈(-) 문자를 없애고 카멜 표기법으로 작성해야 한다.
+    - component
+        - 라이프사이클 메서드 흐름
+          <img alt="Component_lifecycle_method_flow" src="front/framework/react/Component_lifecycle_method_flow.png">
+    - Hooks
+        - 상태 훅
+            - useState
+            - useEffect
+            - useReducer
+                - userReducer()의 반환값 배열의 첫 번째는 현재 상태, 두 번째는 dispatch 함수이다.
+                  dispatch 함수에 action을 전달함으로써 상태를 업데이트할 수 있다.
+                - reducer가 현재 상태와 action을 기반으로 다음 상태를 결정한다.
+                  ```
+                  impport {useReducer} from 'react';
                   
-                    function reducer(state, action) {
-                      // action.type에 따라 다른 작업 수행
-                      switch (action.type) {
-                        case 'INCREMENT':
-                          return { value: state.value + 1 };
-                        case 'DECREMENT':
-                          return { value: state.value - 1 };
-                        default:
-                          // 아무것도 해당되지 않을 떄 기존 상태 반환
-                          return state;
-                      }
+                  function reducer(state, action) {
+                    // action.type에 따라 다른 작업 수행
+                    switch (action.type) {
+                      case 'INCREMENT':
+                        return { value: state.value + 1 };
+                      case 'DECREMENT':
+                        return { value: state.value - 1 };
+                      default:
+                        // 아무것도 해당되지 않을 떄 기존 상태 반환
+                        return state;
                     }
+                  }
                   
-                    const Counter = () => {
-                      const [state, dispatch] = useReducer(reducer, { value: 0 });
+                  const Counter = () => {
+                    const [state, dispatch] = useReducer(reducer, { value: 0 });
                   
-                      return (
-                        <div>
-                          <p>
-                            현재 카운터 값은 <b>{state.value}</b>입니다.
-                          </p>
-                          <button onClick={() => dispatch({ type: 'INCREMENT' })}>+1</button>
-                          <button onClick={() => dispatch({ type: 'DECREMENT' })}>-1</button>
-                        </div>
-                      );
-                    };
-                    ```
-                  - useReducer를 사용했을 때의 가장 큰 장점은 컴포넌트 업데이트 로직을 컴포넌트 바깥으로
-                    빼낼 수 있다는 점이다.
-          - 메모이제이션 훅
-              - useMemo
-              - useCallback
-                  - useMemo는 특정 결과값을 재사용 할 때 사용하는 반면, useCallback은 특정 함수를 새로 만들지 않고
-                    재사용하고 싶을 때 사용한다.
-          - 라우팅 관련 훅
-              - useParams
-              - useSearchParams
-          - useContext
-              - useContext는 컴포넌트에서 context를 읽고 구독할 수 있게 해주는 리액트 hook이다.
-          - 기타
-              - useRef
-                  - 함수 컴포넌트에서 ref를 쉽게 사용할 수 있도록 한다. useRef를 사용하여 ref를
-                    사용하여 ref를 설정하면 useRef를 통해 만든 객체 안의 current 값이 실제 엘리먼트를 가리킨다.
-                  - 컴포넌트 로컬 변수를 사용해야 할 때도 useRef를 활용할 수 있다. 여기서 로컬 변수란
-                    렌더링과 상관없이 바뀔 수 있는 값을 의미한다.
-                  - useRef의 주요 이점
-                      1. DOM 요소에 접근
-                      - 가장 일반적으로 'useRef'는 함수 컴포넌트에서 DOM 요소에 접근하는 데 사용된다. 'useRef'로 생성한
-                        객체의 'current'속성을 통해 해당 DOM 요소에 직접 접근 가능
-                        ```
-                         import React, { useRef, useEffect } from 'react';
+                    return (
+                      <div>
+                        <p>
+                          현재 카운터 값은 <b>{state.value}</b>입니다.
+                        </p>
+                        <button onClick={() => dispatch({ type: 'INCREMENT' })}>+1</button>
+                        <button onClick={() => dispatch({ type: 'DECREMENT' })}>-1</button>
+                      </div>
+                    );
+                  };
+                  ```
+                - useReducer를 사용했을 때의 가장 큰 장점은 컴포넌트 업데이트 로직을 컴포넌트 바깥으로
+                  빼낼 수 있다는 점이다.
+        - 메모이제이션 훅
+            - useMemo
+            - useCallback
+                - useMemo는 특정 결과값을 재사용 할 때 사용하는 반면, useCallback은 특정 함수를 새로 만들지 않고
+                  재사용하고 싶을 때 사용한다.
+        - 라우팅 관련 훅
+            - useParams
+            - useSearchParams
+        - useContext
+            - useContext는 컴포넌트에서 context를 읽고 구독할 수 있게 해주는 리액트 hook이다.
+        - 기타
+            - useRef
+                - 함수 컴포넌트에서 ref를 쉽게 사용할 수 있도록 한다. useRef를 사용하여 ref를
+                  사용하여 ref를 설정하면 useRef를 통해 만든 객체 안의 current 값이 실제 엘리먼트를 가리킨다.
+                - 컴포넌트 로컬 변수를 사용해야 할 때도 useRef를 활용할 수 있다. 여기서 로컬 변수란
+                  렌더링과 상관없이 바뀔 수 있는 값을 의미한다.
+                - useRef의 주요 이점
+                    1. DOM 요소에 접근
+                    - 가장 일반적으로 'useRef'는 함수 컴포넌트에서 DOM 요소에 접근하는 데 사용된다. 'useRef'로 생성한
+                      객체의 'current'속성을 통해 해당 DOM 요소에 직접 접근 가능
+                      ```
+                       import React, { useRef, useEffect } from 'react';
            
-                         const MyComponent = () => {
-                            const myRef = useRef(null);
+                       const MyComponent = () => {
+                          const myRef = useRef(null);
                           
-                            useEffect(() => {
-                               // myRef.current를 통해 DOM 요소에 접근
-                               console.log(myRef.current);
-                            }, []);
+                          useEffect(() => {
+                             // myRef.current를 통해 DOM 요소에 접근
+                             console.log(myRef.current);
+                          }, []);
                           
-                            return <div ref={myRef}>Hello, World!</div>;
-                         };
-                        ```
-                      2. 컴포넌트 간 통신
-                      - 'useRef'는 컴포넌트 간에 값을 공유하고 통신하는 데에도 사용될 수 있다. 예를 들어, 자식 컴포넌트에서 부모
-                        컴포넌트의 상테를 업데이트하고 싶을 때 활용할 수 있다.
-                        ```
-                          import React, { useRef } from 'react';
+                          return <div ref={myRef}>Hello, World!</div>;
+                       };
+                      ```
+                    2. 컴포넌트 간 통신
+                    - 'useRef'는 컴포넌트 간에 값을 공유하고 통신하는 데에도 사용될 수 있다. 예를 들어, 자식 컴포넌트에서 부모
+                      컴포넌트의 상테를 업데이트하고 싶을 때 활용할 수 있다.
+                      ```
+                        import React, { useRef } from 'react';
           
-                          const ParentComponent = () => {
-                             const sharedValueRef = useRef('initial value');
+                        const ParentComponent = () => {
+                           const sharedValueRef = useRef('initial value');
                            
-                             const ChildComponent = () => {
-                                // 부모 컴포넌트의 ref를 통해 값 읽기
-                                console.log(sharedValueRef.current);
+                           const ChildComponent = () => {
+                              // 부모 컴포넌트의 ref를 통해 값 읽기
+                              console.log(sharedValueRef.current);
                            
-                                // 부모 컴포넌트의 ref를 통해 값 업데이트
-                                sharedValueRef.current = 'new value';
-                             };
+                              // 부모 컴포넌트의 ref를 통해 값 업데이트
+                              sharedValueRef.current = 'new value';
+                           };
                            
-                             return (
-                                <div>
-                                   <ChildComponent />
-                                </div>
-                             );
-                          };
-                        ```
-                      3. 컴포넌트 렌더링과 무관한 값 저장
-                      - 'useRef'에 저장된 값은 컴포넌트가 리렌더링될 때 변경되지 않는다. 따라서 'useRef'를 사용하면
-                        값이 변경되더라도 컴포넌트가 다시 렌더링되지 않는다.
-                        ```
-                          import React, { useRef, useState } from 'react';
+                           return (
+                              <div>
+                                 <ChildComponent />
+                              </div>
+                           );
+                        };
+                      ```
+                    3. 컴포넌트 렌더링과 무관한 값 저장
+                    - 'useRef'에 저장된 값은 컴포넌트가 리렌더링될 때 변경되지 않는다. 따라서 'useRef'를 사용하면
+                      값이 변경되더라도 컴포넌트가 다시 렌더링되지 않는다.
+                      ```
+                        import React, { useRef, useState } from 'react';
           
-                          const MyComponent = () => {
-                             const renderCount = useRef(0);
+                        const MyComponent = () => {
+                           const renderCount = useRef(0);
                            
-                             // 컴포넌트 렌더링 횟수 증가 (재렌더링되어도 값이 유지됨)
-                             renderCount.current += 1;
+                           // 컴포넌트 렌더링 횟수 증가 (재렌더링되어도 값이 유지됨)
+                           renderCount.current += 1;
                            
-                             const [state, setState] = useState('initial state');
+                           const [state, setState] = useState('initial state');
                            
-                             return (
-                                <div>
-                                   <p>Render count: {renderCount.current}</p>
-                                   <button onClick={() => setState('new state')}>Update State</button>
-                                </div>
-                             );
-                          };
-                        ```
-          - useCallback vs useEffect
-              - useCallback
-                  - 콜백함수를 자식에게 전달해줄 때 사용
-                  - 자주 렌더링 위험이 있는 요소를 성능 최적화를 위해 사용
-                  - const onChange = useCallback(e => {...}); 이렇게 지정하고 자식에게 던진다
-              - useEffect
-                  - 사이드 이펙트 방지를 위해 사용
-                  - API 통신(data fetch), 이벤트 리스너 추가, DOM 업데이트 등
-                  - useEffect(()=>{...}); 함수 호출을 통해, 실행한다
-      - default props & default parameter
-          - 리액트 18.2 버전까지 방식 deprecated
-            ```
-            const GreetComponent = ({ name, age }) => (
-              <div>{`Hello, my name is ${name}, ${age}`}</div>
-            );
-            GreetComponent.defaultProps = {name: 'oklee', age: 25};
-            ```
-          - 리액트 18.3 버전 이후
-            ```
-            const GreetComponent = ({ name = 'oklee', age = 25 }) => (
-              <div>{`Hello, my name is ${name}, ${age}`}</div>
-            );
-            ```
-      - 컴포넌트 스타일링
-          - 일반 CSS
-          - Sass
-              - 자주 사용되는 CSS 전처리기 중 하나로 확장된 CSS 문법을 사용하여 CSS 코드를 더욱 쉽게 작성할 수 있도록 해준다.
-          - CSS Module
-              - 스타일을 작성할 때 CSS 클래스가 다른 CSS 클래스의 이름과 절대 충돌하지 않도록 파일마다 고유한 이름을
-                자동으로 생성해 주는 옵션이다.
-          - styled-components
-              - 스타일을 자바스크립트 파일에 내장시키는 방식으로 스타일을 작성함과 동시에 해당 스타일이 적용된 컴포넌트를
-                만들 수 있게 해준다.
-              - Tagged 템플릿 리터럴
-                  - 스타일을 작성할 때 `을 사용하여 만든 문자열에 스타일 정보를 넣을 수 있는데, 이 문법을 Tagged 템플릿 리터럴
-                    이라고 부른다. CSS Module에 사용하는 일반 템플릿 리터럴과 다른 점은 템플릿 안에 자바스크립트 객체나 함수를
-                    전달 할 때 온전히 추출할 수 있다는 것이다.
-      - 리액트 라우터
-          - Outlet component
-              - 이 컴포넌트는 Route의 children으로 들어가는 JSX 엘리먼트를 보여준다.
-      - context
-          - Provider를 사용할 때 value를 명시하지 않으면 오류가 발생한다.
-      - 리덕스
-          - 리덕스의 3가지 규칙
-              1. 단일 스토어
-                  - 하나의 애플리케이션 안에는 하나의 스토어가 들어 있다.
-              2. 읽기 전용 상태
-                  - 리덕스 상태는 읽기 전용이다. 상태를 업데이트 할 때 기존의 객체는
-                    건드리지 않고 새로운 객체를 생성해 주어야 한다.</br>
-                    리덕스에서 불변성을 유지해야 하는 이유는 내부적으로 데이터가 변경되는
-                    것을 감지하기 위해 얕은 비교 검사를 하기 때문이다.
-                    객체의 변화를 감지할 때 겉만 비교하여 좋은 성능을 유지할 수 있다.
-              3. 리듀서는 순수한 함수
-                  - 변화를 일으키는 리듀서 함수는 순수한 함수여야 한다. 순수한 함수는
-                    다음 조건을 만족한다.
-                      1. 리듀서 함수는 이전 상태와 액션 객체를 파라미터로 받는다.
-                      2. 파라미터 외의 값에는 의존하면 안 된다.
-                      3. 이전 상태는 절대로 건드리지 않고, 변화를 준 새로운 상태 객체를
-                         만들어서 반환한다.
-                      4. 똑같은 파라미터로 호출된 리듀서 함수는 언제나 똑같은 결과 값을
-                         반환해야 한다.
-      - zustand
-          - 리덕스와의 비교
-              - 상태 모델
-                  - 개념적으로 Zustand와 Redux는 매우 유사하며 둘 다 불변 상태 모델을 기반으로 한다.
-                    그러나 Redux를 사용하려면 앱을 context provider로 래핑해야한다. zustand는 그렇지 않다.
-              - 렌더링 최적화
-                  - 앱 내 렌더링 최적화와 관련하여 Zustand와 Redux의 접근 방식에는 큰 차이가 없다. 두 라이브러리 모두
-                    선택기를 사용하여 렌더링 최적화를 수동으로 적용하는 것이 좋다.
+                           return (
+                              <div>
+                                 <p>Render count: {renderCount.current}</p>
+                                 <button onClick={() => setState('new state')}>Update State</button>
+                              </div>
+                           );
+                        };
+                      ```
+        - useCallback vs useEffect
+            - useCallback
+                - 콜백함수를 자식에게 전달해줄 때 사용
+                - 자주 렌더링 위험이 있는 요소를 성능 최적화를 위해 사용
+                - const onChange = useCallback(e => {...}); 이렇게 지정하고 자식에게 던진다
+            - useEffect
+                - 사이드 이펙트 방지를 위해 사용
+                - API 통신(data fetch), 이벤트 리스너 추가, DOM 업데이트 등
+                - useEffect(()=>{...}); 함수 호출을 통해, 실행한다
+    - default props & default parameter
+        - 리액트 18.2 버전까지 방식 deprecated
+          ```
+          const GreetComponent = ({ name, age }) => (
+            <div>{`Hello, my name is ${name}, ${age}`}</div>
+          );
+          GreetComponent.defaultProps = {name: 'oklee', age: 25};
+          ```
+        - 리액트 18.3 버전 이후
+          ```
+          const GreetComponent = ({ name = 'oklee', age = 25 }) => (
+            <div>{`Hello, my name is ${name}, ${age}`}</div>
+          );
+          ```
+    - 컴포넌트 스타일링
+        - 일반 CSS
+        - Sass
+            - 자주 사용되는 CSS 전처리기 중 하나로 확장된 CSS 문법을 사용하여 CSS 코드를 더욱 쉽게 작성할 수 있도록 해준다.
+        - CSS Module
+            - 스타일을 작성할 때 CSS 클래스가 다른 CSS 클래스의 이름과 절대 충돌하지 않도록 파일마다 고유한 이름을
+              자동으로 생성해 주는 옵션이다.
+        - styled-components
+            - 스타일을 자바스크립트 파일에 내장시키는 방식으로 스타일을 작성함과 동시에 해당 스타일이 적용된 컴포넌트를
+              만들 수 있게 해준다.
+            - Tagged 템플릿 리터럴
+                - 스타일을 작성할 때 `을 사용하여 만든 문자열에 스타일 정보를 넣을 수 있는데, 이 문법을 Tagged 템플릿 리터럴
+                  이라고 부른다. CSS Module에 사용하는 일반 템플릿 리터럴과 다른 점은 템플릿 안에 자바스크립트 객체나 함수를
+                  전달 할 때 온전히 추출할 수 있다는 것이다.
+    - context
+        - Provider를 사용할 때 value를 명시하지 않으면 오류가 발생한다.
+    - 리렌더링 조건
+        - React가 리렌더링되는 때는 다음과 같다
+            - state가 업데이트 되었을 때
+            - 부모 컴포넌트가 리렌더링 되었을 때
+            - props가 업데이트 되었을 때
+                - 같은 props를 받게되더라도 리렌더링이 발생하는데, 이를 방지하기 위해 React.memo()를 사용할 수 있다.
+- 기타 라이브러리 
+    - router
+        - 리액트 라우터
+            - Outlet component
+                - 이 컴포넌트는 Route의 children으로 들어가는 JSX 엘리먼트를 보여준다.
+    - store
+        - 리덕스
+            - 리덕스의 3가지 규칙
+                  1. 단일 스토어
+                      - 하나의 애플리케이션 안에는 하나의 스토어가 들어 있다.
+                  2. 읽기 전용 상태
+                      - 리덕스 상태는 읽기 전용이다. 상태를 업데이트 할 때 기존의 객체는
+                        건드리지 않고 새로운 객체를 생성해 주어야 한다.</br>
+                        리덕스에서 불변성을 유지해야 하는 이유는 내부적으로 데이터가 변경되는
+                        것을 감지하기 위해 얕은 비교 검사를 하기 때문이다.
+                        객체의 변화를 감지할 때 겉만 비교하여 좋은 성능을 유지할 수 있다.
+                  3. 리듀서는 순수한 함수
+                      - 변화를 일으키는 리듀서 함수는 순수한 함수여야 한다. 순수한 함수는
+                        다음 조건을 만족한다.
+                          1. 리듀서 함수는 이전 상태와 액션 객체를 파라미터로 받는다.
+                          2. 파라미터 외의 값에는 의존하면 안 된다.
+                          3. 이전 상태는 절대로 건드리지 않고, 변화를 준 새로운 상태 객체를
+                             만들어서 반환한다.
+                          4. 똑같은 파라미터로 호출된 리듀서 함수는 언제나 똑같은 결과 값을
+                             반환해야 한다.
+        - zustand
+            - 리덕스와의 비교
+                - 상태 모델
+                    - 개념적으로 Zustand와 Redux는 매우 유사하며 둘 다 불변 상태 모델을 기반으로 한다.
+                      그러나 Redux를 사용하려면 앱을 context provider로 래핑해야한다. zustand는 그렇지 않다.
+                - 렌더링 최적화
+                    - 앱 내 렌더링 최적화와 관련하여 Zustand와 Redux의 접근 방식에는 큰 차이가 없다. 두 라이브러리 모두
+                      선택기를 사용하여 렌더링 최적화를 수동으로 적용하는 것이 좋다.
 
 <hr />
 
@@ -1101,8 +1117,6 @@
             - useFocusEffect
                 - 화면에 포커스가 잡혔을 때 특정 작업을 할 수 있게 하는 Hook이다.
 
-<hr />
-
 #### Swift
 - 애플의 iOS, macOS 드 자사의 제품 개발에 활용하는 프로그래밍 언어
 - 언어적 특성
@@ -1117,6 +1131,7 @@
 
 <hr />
 
+### Bonus Content
 #### Storybook
 - Guides
     - Get started
