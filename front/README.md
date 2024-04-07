@@ -848,6 +848,10 @@
                 - React Native는 컨트롤부터 활동 지시자까지 모든 것을 위한 Core Components들을 가지고 있다.
                 - 다음과 같은 Core Components들을 사용할 것이다.<br>
                   <img src="mobile_applications/react_native/core_components.png">
+        - React Fundamentals
+            - State
+                - props는 component를 렌더링 방법을 구성하는데 사용되는 인수인 반면에, state는 컴포넌트의 개인적인 데이터 스토리지이다.
+                - state는 시간이 지남에 따라 변경되거나 사용자 상호작용을 통해 발생하는 데이터를 처리하는데 유용하다.
         - Using List Views
             - React Native는 data의 리스트를 표현하기 위해 적합한 component를 제공한다. 일반적으로 FlatList나 SectionList
               중에서 사용할 수 있다.
