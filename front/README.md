@@ -590,6 +590,14 @@
                     }
                   ```
 - CORE CONCEPTS
+    - Utility-First Fundamentals
+        - Tailwind를 사용하면 기존 class를 HTML에 직접 적용하여 요소의 스타일을 지정할 수 있다.
+    - Hover, Focus, and Other States
+    - Responsive Design
+    - Dark Mode
+    - Reusing Styles
+    - Adding Custom Styles
+    - Functions & Directives
 - CUSTOMIZATION
 - BASE STYLES
 - LAYOUT
