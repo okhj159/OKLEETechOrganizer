@@ -867,6 +867,36 @@
             - FlatList component는 data와 renderItem이라는 2가지 props를 필요로 한다.
                 - data는 리스트의 정보의 소스이다.
                 - renderItem은 소스로부터 하나의 항목을 가져와 렌더링할 형식이 지정된 구성 요소를 반환한다.
+    - Environment setup
+        - Setting up the development
+            - macOS
+                - iOS
+                    - Installing dependencies
+                        - Node, Watchman, React Native CLI, Xcode and cocoaPods가 필요하다.
+                        - Node & Watchman
+                            ```
+                                brew install node
+                                brew install watchman
+                            ```
+                            - Watchman은 페이스북에서 개발한 파일시스템 변경을 확인하는 강력한 툴이다.
+                        - Xcode
+                            - Xcode를 설치하는 가장 쉬운 방법은 앱 스토어를 이용하는 것이다.
+                            - CocoaPods
+                                - iOS에서 사용할 수 있는 종속성 관리 시스템중 하나이다. CocoaPods는 Ruby gem이다. 최신 macOS 버전에 
+                                  동봉된 Ruby 버전을 이용하여 설치할 수 있다.
+                        - React Native CLI
+                            - React Native는 CLI가 내장되어 있다. 특정 버전을 전역적으로 설치하고 관리하는 것보다는 Node.js에 내장된 npx
+                              의 런타임의 현재 버전에 접근하는 것이 좋다. npx react-native <command>를 이용하면 현재 안정적인 CLI 버전이
+                              다운되고 실행된다.
+                - Android
+                    - Installing dependencies
+                        - Node, Watchman, React Native CLI, JDK, Android Studio가 필요하다.
+                        - Node & Watchman
+                            ```
+                                brew install node
+                                brew install watchman
+                            ```
+                            - Watchman은 페이스북에서 개발한 파일시스템 변경을 확인하는 강력한 툴이다.
     - UI & Interaction
         - style
             - 모든 core components는 style이라는 prop을 채택한다. style은 CSS가 웹에서 작동하는 것과
