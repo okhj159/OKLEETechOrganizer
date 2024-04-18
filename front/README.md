@@ -697,6 +697,79 @@
                 const user: User = new UserAccount("Murphy", 1);
               ```
 - Handbook
+    - Everyday Types
+        - 객체 타입
+            - 옵셔널 프로퍼티 
+                - 객체 타입은 일부 또는 모든 프로퍼티의 타입을 선택적인 타입, 즐 옵셔널로 지정할 수 있다.
+                  프로퍼티 이름 뒤에 ?를 붙이면 된다.
+                - 자바스크립트에서는 존재하지 않는 프로퍼티에 접근하였을 때, 런타임 오류가 발생하지 않고 undefinded 값을
+                  얻게 된다. 이 때문에 옵셔널 프로퍼티를 읽었을 때, 해당 값을 사용하기에 앞서 undefinded인지 여부를 확인해야 한다.
+                  ```
+                  function printName(obj: { first: string; last?: string }) {
+                      // 오류 - `obj.last`의 값이 제공되지 않는다면 프로그램이 멈추게 됩니다!
+                      console.log(obj.last.toUpperCase());
+                  
+                      'obj.last' is possibly 'undefined'.
+                      
+                      if (obj.last !== undefined) {
+                          // OK
+                          console.log(obj.last.toUpperCase());
+                      }
+                    
+                      // 최신 JavaScript 문법을 사용하였을 때 또 다른 안전한 코드
+                      console.log(obj.last?.toUpperCase());
+                  }
+                  ```
+        - 유니언 타입
+            - 유니언 타입 정의하기
+                ```
+              function printId(id: number | string) {
+                  console.log("Your ID is: " + id);
+              }
+              // OK
+              printId(101);
+              // OK
+              printId("202");
+              // 오류
+              printId({ myID: 22342 });
+              Argument of type '{ myID: number; }' is not assignable to parameter of type 'string | number'.
+                ```
+            - 유니언 타입 사용하기
+                - 타입스크립트에서 유니언을 다룰 떄는 해당 유니언 타입의 모든 멤버에 대하여 유효한 작업일 때에만 허용된다. 예를 들어
+                  string | number라는 유니언 타입의 경우, string 타입에만 유효한 메서드는 사용할 수 없다.
+                  ```
+                  function printId(id: number | string) {
+                      console.log(id.toUpperCase());
+                      Property 'toUpperCase' does not exist on type 'string | number'.
+                          Property 'toUpperCase' does not exist on type 'number'.
+                  }
+                  ```
+                - 이를 해결하려면 코드상에서 유니언을 좁혀야 한다. 이는 타입 표기가 없는 자바스크립트에서 벌어지는 일과 동일하다.
+                  좁히기란 타입스크립트가 코드 구조를 바탕으로 어떤 값을 보다 구체적인 타입으로 추론할 수 있을 때 발생한다.
+                  ```
+                  function printId(id: number | string) {
+                      if (typeof id === "string") {
+                          // 이 분기에서 id는 'string' 타입을 가집니다
+                        
+                          console.log(id.toUpperCase());
+                      } else {
+                          // 여기에서 id는 'number' 타입을 가집니다
+                          console.log(id);
+                      }
+                  }
+                  ```
+                  또 다른 예시는 Array.isArray와 같은 함수를 사용하는 것이다.
+                  ```
+                  function welcomePeople(x: string[] | string) {
+                      if (Array.isArray(x)) {
+                          // 여기에서 'x'는 'string[]' 타입입니다
+                          console.log("Hello, " + x.join(" and "));
+                      } else {
+                          // 여기에서 'x'는 'string' 타입입니다
+                          console.log("Welcome lone traveler " + x);
+                      }
+                  }
+                  ```
     - Object Types
         - Property Modifiers
             - Optional Properties
