@@ -33,6 +33,7 @@ JSX는 JavaScript의 모든 기능이 포함되어 있으며, React Element를 �
 ## React 장점을 설명해주세요.
 ## React의 LifeCycle을 아는대로 답변해주세요.
 ## React hook에 대해서 설명해주세요.
+## hook은 왜 최상위에서만 호출되어야하는지 설명해주세요.
 ## 메모이제이션 hook useMemo, useCallback 차이점이 무엇이고 메모제이션 해야하는 이유가 무엇인가요?
 ## Mobx와 Redux의 차이점은? ⭐⭐⭐
 ## React의 상태변화 감지에 대해 아는대로 답변해주세요. ⭐⭐
