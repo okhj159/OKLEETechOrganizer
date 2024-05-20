@@ -307,6 +307,9 @@
             - 명시된 컴포넌트에 국한되지 않고 하위 계층까지 클라이언트 번들로 간주된다.
         - `use server`
             - 클라이언트 사이드에서 호출할 수 있는 서버 사이드 함수임을 표시
+    - Rules of Hooks (hook의 규칙)
+      - 최상위(at the top of level)에서만 hook을 호출해야 한다.
+      - 이 규칙으로 컴포넌트가 렌더링 될 때마다 동일한 순서로 hook이 호출되는 것을 보장한다.
 - 기타
     - 네이밍 규칙
         - 컴포넌트가 단일 파일로 구성되는 경우 파일 이름은 대문자로 시작해야 한다.
@@ -503,28 +506,77 @@
 - 기타 라이브러리 
     - router
         - 리액트 라우터
-            - Outlet component
-                - 이 컴포넌트는 Route의 children으로 들어가는 JSX 엘리먼트를 보여준다.
+            - Getting Started
+                - Feature Overview
+                    - Client Side Routing
+                    - Nested Routes
+                    - Dynamic Segments
+                    - Ranked Route Matching
+                    - Active Links
+                    - Relative Links
+                    - Data Loading
+                    - Redirects
+                    - Pending Navigation UI
+                    - Skeleton UI with <Suspense>
+                    - Data Mutation
+                    - Data Revalidation
+                    - Busy Indicators
+                    - Optimistic UI
+                    - Data Fetchers
+                - Main Concepts
+            - Routers
+                - Picking a Router
+                - createBrowserRouter
+            - Router Components
+                - BrowserRouter
+                - NativeRouter
+                - Router
+            - Route
+                - Route
+                - action
+                - loader
+            - Components
+                - Await
+                - Form
+                - Link
+                - Outlet
+                    - 이 컴포넌트는 Route의 children으로 들어가는 JSX 엘리먼트를 보여준다.
+                - Route
+                - Routes
+            - Hooks
+                - useActionData
+                - useLocation
+                - useOutlet
+            - Guides
     - store
         - 리덕스
-            - 리덕스의 3가지 규칙
-                  1. 단일 스토어
-                      - 하나의 애플리케이션 안에는 하나의 스토어가 들어 있다.
-                  2. 읽기 전용 상태
-                      - 리덕스 상태는 읽기 전용이다. 상태를 업데이트 할 때 기존의 객체는
-                        건드리지 않고 새로운 객체를 생성해 주어야 한다.</br>
-                        리덕스에서 불변성을 유지해야 하는 이유는 내부적으로 데이터가 변경되는
-                        것을 감지하기 위해 얕은 비교 검사를 하기 때문이다.
-                        객체의 변화를 감지할 때 겉만 비교하여 좋은 성능을 유지할 수 있다.
-                  3. 리듀서는 순수한 함수
-                      - 변화를 일으키는 리듀서 함수는 순수한 함수여야 한다. 순수한 함수는
-                        다음 조건을 만족한다.
-                          1. 리듀서 함수는 이전 상태와 액션 객체를 파라미터로 받는다.
-                          2. 파라미터 외의 값에는 의존하면 안 된다.
-                          3. 이전 상태는 절대로 건드리지 않고, 변화를 준 새로운 상태 객체를
-                             만들어서 반환한다.
-                          4. 똑같은 파라미터로 호출된 리듀서 함수는 언제나 똑같은 결과 값을
-                             반환해야 한다.
+            - Introduction
+                - Getting Started with Redux
+                - Installation
+                - Core Concepts
+                - Ecosystem
+            - Tutorials
+            - Using Redux
+            - Style Guide
+            - 기타 
+                - 리덕스의 3가지 규칙
+                      1. 단일 스토어
+                          - 하나의 애플리케이션 안에는 하나의 스토어가 들어 있다.
+                      2. 읽기 전용 상태
+                          - 리덕스 상태는 읽기 전용이다. 상태를 업데이트 할 때 기존의 객체는
+                            건드리지 않고 새로운 객체를 생성해 주어야 한다.</br>
+                            리덕스에서 불변성을 유지해야 하는 이유는 내부적으로 데이터가 변경되는
+                            것을 감지하기 위해 얕은 비교 검사를 하기 때문이다.
+                            객체의 변화를 감지할 때 겉만 비교하여 좋은 성능을 유지할 수 있다.
+                      3. 리듀서는 순수한 함수
+                          - 변화를 일으키는 리듀서 함수는 순수한 함수여야 한다. 순수한 함수는
+                            다음 조건을 만족한다.
+                              1. 리듀서 함수는 이전 상태와 액션 객체를 파라미터로 받는다.
+                              2. 파라미터 외의 값에는 의존하면 안 된다.
+                              3. 이전 상태는 절대로 건드리지 않고, 변화를 준 새로운 상태 객체를
+                                 만들어서 반환한다.
+                              4. 똑같은 파라미터로 호출된 리듀서 함수는 언제나 똑같은 결과 값을
+                                 반환해야 한다.
         - zustand
             - 리덕스와의 비교
                 - 상태 모델
@@ -591,6 +643,14 @@
                     }
                   ```
 - CORE CONCEPTS
+    - Utility-First Fundamentals
+        - Tailwind를 사용하면 기존 class를 HTML에 직접 적용하여 요소의 스타일을 지정할 수 있다.
+    - Hover, Focus, and Other States
+    - Responsive Design
+    - Dark Mode
+    - Reusing Styles
+    - Adding Custom Styles
+    - Functions & Directives
 - CUSTOMIZATION
 - BASE STYLES
 - LAYOUT
@@ -641,6 +701,79 @@
                 const user: User = new UserAccount("Murphy", 1);
               ```
 - Handbook
+    - Everyday Types
+        - 객체 타입
+            - 옵셔널 프로퍼티 
+                - 객체 타입은 일부 또는 모든 프로퍼티의 타입을 선택적인 타입, 즐 옵셔널로 지정할 수 있다.
+                  프로퍼티 이름 뒤에 ?를 붙이면 된다.
+                - 자바스크립트에서는 존재하지 않는 프로퍼티에 접근하였을 때, 런타임 오류가 발생하지 않고 undefinded 값을
+                  얻게 된다. 이 때문에 옵셔널 프로퍼티를 읽었을 때, 해당 값을 사용하기에 앞서 undefinded인지 여부를 확인해야 한다.
+                  ```
+                  function printName(obj: { first: string; last?: string }) {
+                      // 오류 - `obj.last`의 값이 제공되지 않는다면 프로그램이 멈추게 됩니다!
+                      console.log(obj.last.toUpperCase());
+                  
+                      'obj.last' is possibly 'undefined'.
+                      
+                      if (obj.last !== undefined) {
+                          // OK
+                          console.log(obj.last.toUpperCase());
+                      }
+                    
+                      // 최신 JavaScript 문법을 사용하였을 때 또 다른 안전한 코드
+                      console.log(obj.last?.toUpperCase());
+                  }
+                  ```
+        - 유니언 타입
+            - 유니언 타입 정의하기
+                ```
+              function printId(id: number | string) {
+                  console.log("Your ID is: " + id);
+              }
+              // OK
+              printId(101);
+              // OK
+              printId("202");
+              // 오류
+              printId({ myID: 22342 });
+              Argument of type '{ myID: number; }' is not assignable to parameter of type 'string | number'.
+                ```
+            - 유니언 타입 사용하기
+                - 타입스크립트에서 유니언을 다룰 떄는 해당 유니언 타입의 모든 멤버에 대하여 유효한 작업일 때에만 허용된다. 예를 들어
+                  string | number라는 유니언 타입의 경우, string 타입에만 유효한 메서드는 사용할 수 없다.
+                  ```
+                  function printId(id: number | string) {
+                      console.log(id.toUpperCase());
+                      Property 'toUpperCase' does not exist on type 'string | number'.
+                          Property 'toUpperCase' does not exist on type 'number'.
+                  }
+                  ```
+                - 이를 해결하려면 코드상에서 유니언을 좁혀야 한다. 이는 타입 표기가 없는 자바스크립트에서 벌어지는 일과 동일하다.
+                  좁히기란 타입스크립트가 코드 구조를 바탕으로 어떤 값을 보다 구체적인 타입으로 추론할 수 있을 때 발생한다.
+                  ```
+                  function printId(id: number | string) {
+                      if (typeof id === "string") {
+                          // 이 분기에서 id는 'string' 타입을 가집니다
+                        
+                          console.log(id.toUpperCase());
+                      } else {
+                          // 여기에서 id는 'number' 타입을 가집니다
+                          console.log(id);
+                      }
+                  }
+                  ```
+                  또 다른 예시는 Array.isArray와 같은 함수를 사용하는 것이다.
+                  ```
+                  function welcomePeople(x: string[] | string) {
+                      if (Array.isArray(x)) {
+                          // 여기에서 'x'는 'string[]' 타입입니다
+                          console.log("Hello, " + x.join(" and "));
+                      } else {
+                          // 여기에서 'x'는 'string' 타입입니다
+                          console.log("Welcome lone traveler " + x);
+                      }
+                  }
+                  ```
     - Object Types
         - Property Modifiers
             - Optional Properties
@@ -849,6 +982,10 @@
                 - React Native는 컨트롤부터 활동 지시자까지 모든 것을 위한 Core Components들을 가지고 있다.
                 - 다음과 같은 Core Components들을 사용할 것이다.<br>
                   <img src="mobile_applications/react_native/core_components.png">
+        - React Fundamentals
+            - State
+                - props는 component를 렌더링 방법을 구성하는데 사용되는 인수인 반면에, state는 컴포넌트의 개인적인 데이터 스토리지이다.
+                - state는 시간이 지남에 따라 변경되거나 사용자 상호작용을 통해 발생하는 데이터를 처리하는데 유용하다.
         - Using List Views
             - React Native는 data의 리스트를 표현하기 위해 적합한 component를 제공한다. 일반적으로 FlatList나 SectionList
               중에서 사용할 수 있다.
@@ -856,6 +993,36 @@
             - FlatList component는 data와 renderItem이라는 2가지 props를 필요로 한다.
                 - data는 리스트의 정보의 소스이다.
                 - renderItem은 소스로부터 하나의 항목을 가져와 렌더링할 형식이 지정된 구성 요소를 반환한다.
+    - Environment setup
+        - Setting up the development
+            - macOS
+                - iOS
+                    - Installing dependencies
+                        - Node, Watchman, React Native CLI, Xcode and cocoaPods가 필요하다.
+                        - Node & Watchman
+                            ```
+                                brew install node
+                                brew install watchman
+                            ```
+                            - Watchman은 페이스북에서 개발한 파일시스템 변경을 확인하는 강력한 툴이다.
+                        - Xcode
+                            - Xcode를 설치하는 가장 쉬운 방법은 앱 스토어를 이용하는 것이다.
+                            - CocoaPods
+                                - iOS에서 사용할 수 있는 종속성 관리 시스템중 하나이다. CocoaPods는 Ruby gem이다. 최신 macOS 버전에 
+                                  동봉된 Ruby 버전을 이용하여 설치할 수 있다.
+                        - React Native CLI
+                            - React Native는 CLI가 내장되어 있다. 특정 버전을 전역적으로 설치하고 관리하는 것보다는 Node.js에 내장된 npx
+                              의 런타임의 현재 버전에 접근하는 것이 좋다. npx react-native <command>를 이용하면 현재 안정적인 CLI 버전이
+                              다운되고 실행된다.
+                - Android
+                    - Installing dependencies
+                        - Node, Watchman, React Native CLI, JDK, Android Studio가 필요하다.
+                        - Node & Watchman
+                            ```
+                                brew install node
+                                brew install watchman
+                            ```
+                            - Watchman은 페이스북에서 개발한 파일시스템 변경을 확인하는 강력한 툴이다.
     - UI & Interaction
         - style
             - 모든 core components는 style이라는 prop을 채택한다. style은 CSS가 웹에서 작동하는 것과
