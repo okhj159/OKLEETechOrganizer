@@ -109,6 +109,25 @@
       변경하여 보여주고, 큰 화면을 가진 기기에서는 웹사이트의 구조를 큰 화면에 최적화된 구조로 변경하여 보여준다.
 -기타
     - flex와 grid의 가장 큰 차이점은 flex는 한 방향 레이아웃 시스템이고 grid는 두 방향 레이아웃 시스템이라는 점이다.
+    - grid
+        - 용어정리
+            - grid container
+                - display: grid를 적용하는, Grid의 전체 영역이다.
+            - grid item
+                - grid 컨테이너의 자식 요소들ㄹ이다
+            - grid track
+                - grid의 행 또는 열
+            - grid cell
+                - grid의 한 칸을 가리키는 말
+            - grid line
+                - grid 셀을 구분하는 선
+            - grid gap
+                - grid 셀 사이의 간격
+            - grid 영역
+                - grid 라인으로 둘러싸인 사각형 영역을로, 그리드 셀의 집합
+        - grid의 속성은 컨테이너에 적용하는 속성과, 아이템에 적용하는 속성으로 나뉜다.
+            - 컨테이너에 적용하는 속성
+            - 아이템에 적용하는 속성
 <hr />
 
 ### JavaScript
