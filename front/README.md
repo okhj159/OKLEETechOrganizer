@@ -1505,4 +1505,147 @@
                     +  onPinTask: PropTypes.func,
                     + };
                 ```
+    - 복합적 컴포넌트
+        - 복합적 컴포넌트 조합하기
+            - 설정하기
+                - src/components/TaskList.jsx
+                ```
+                    import React from 'react';
+
+                    import Task from './Task';
+
+                    export default function TaskList({ loading, tasks, onPinTask, onArchiveTask }) {
+                      const events = {
+                        onPinTask,
+                        onArchiveTask,
+                      };
+
+                      if (loading) {
+                        return <div className="list-items">loading</div>;
+                      }
+
+                      if (tasks.length === 0) {
+                        return <div className="list-items">empty</div>;
+                      }
+
+                      return (
+                        <div className="list-items">
+                          {tasks.map(task => (
+                            <Task key={task.id} task={task} {...events} />
+                          ))}
+                        </div>
+                      );
+                    }
+                ``` 
+
+                - src/components/TaskList.stories.js
+                ```
+                    import React from 'react';
+
+                    import TaskList from './TaskList';
+                    import * as TaskStories from './Task.stories';
+
+                    export default {
+                      component: TaskList,
+                      title: 'TaskList',
+                      decorators: [story => <div style={{ padding: '3rem' }}>{story()}</div>],
+                    };
+
+                    const Template = args => <TaskList {...args} />;
+
+                    export const Default = Template.bind({});
+                    Default.args = {
+                      // Shaping the stories through args composition.
+                      // The data was inherited from the Default story in Task.stories.js.
+                      tasks: [
+                        { ...TaskStories.Default.args.task, id: '1', title: 'Task 1' },
+                        { ...TaskStories.Default.args.task, id: '2', title: 'Task 2' },
+                        { ...TaskStories.Default.args.task, id: '3', title: 'Task 3' },
+                        { ...TaskStories.Default.args.task, id: '4', title: 'Task 4' },
+                        { ...TaskStories.Default.args.task, id: '5', title: 'Task 5' },
+                        { ...TaskStories.Default.args.task, id: '6', title: 'Task 6' },
+                      ],
+                    };
+
+                    export const WithPinnedTasks = Template.bind({});
+                    WithPinnedTasks.args = {
+                      // Shaping the stories through args composition.
+                      // Inherited data coming from the Default story.
+                      tasks: [
+                        ...Default.args.tasks.slice(0, 5),
+                        { id: '6', title: 'Task 6 (pinned)', state: 'TASK_PINNED' },
+                      ],
+                    };
+
+                    export const Loading = Template.bind({});
+                    Loading.args = {
+                      tasks: [],
+                      loading: true,
+                    };
+
+                    export const Empty = Template.bind({});
+                    Empty.args = {
+                      // Shaping the stories through args composition.
+                      // Inherited data coming from the Loading story.
+                      ...Loading.args,
+                      loading: false,
+                    };
+                ```
+            - 상태(States) 구현하기
+                - src/components/TaskList.js
+                ```
+                    import React from 'react';
+
+                    import Task from './Task';
+
+                    export default function TaskList({ loading, tasks, onPinTask, onArchiveTask }) {
+                      const events = {
+                        onPinTask,
+                        onArchiveTask,
+                      };
+                      const LoadingRow = (
+                        <div className="loading-item">
+                          <span className="glow-checkbox" />
+                          <span className="glow-text">
+                            <span>Loading</span> <span>cool</span> <span>state</span>
+                          </span>
+                        </div>
+                      );
+                      if (loading) {
+                        return (
+                          <div className="list-items" data-testid="loading" key={"loading"}>
+                            {LoadingRow}
+                            {LoadingRow}
+                            {LoadingRow}
+                            {LoadingRow}
+                            {LoadingRow}
+                            {LoadingRow}
+                          </div>
+                        );
+                      }
+                      if (tasks.length === 0) {
+                        return (
+                          <div className="list-items" key={"empty"} data-testid="empty">
+                            <div className="wrapper-message">
+                              <span className="icon-check" />
+                              <div className="title-message">You have no tasks</div>
+                              <div className="subtitle-message">Sit back and relax</div>
+                            </div>
+                          </div>
+                        );
+                      }
+
+                      const tasksInOrder = [
+                        ...tasks.filter((t) => t.state === "TASK_PINNED"),
+                        ...tasks.filter((t) => t.state !== "TASK_PINNED"),
+                      ];
+                      return (
+                        <div className="list-items">
+                          {tasksInOrder.map((task) => (
+                            <Task key={task.id} task={task} {...events} />
+                          ))}
+                        </div>
+                      );
+                    }
+                ```
 <hr />
