@@ -24,6 +24,8 @@
 - [Architecture](architecture/README.md)<br>
 
 ## Participants
-- okhj159(옥현지 회사계정)
-- hyunji-ok(옥현지 개인계정)
-- jinieeee(이지은 개인계정)
+- 옥현지
+    - hyunji-ok(개인계정)
+    - okhj159(회사계정)
+- 이지은
+    - jinieeee(개인계정)
