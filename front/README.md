@@ -1328,16 +1328,181 @@
 
 ### Bonus Content
 #### Storybook
-- Guides
-    - Get started
-        - Get started with Storybook
-            - What is Storybook?
-                - Storybook은 독립적으로 UI component와 page를 구축하기 위한 프론트엔드 workshop 이다.
-        - Why Storybook?
-        - Frameworks
-            - Next.js
-            - React & Webpack
-    - Testing
+- docs
+    - Guides
+        - Get started
+            - Get started with Storybook
+                - What is Storybook?
+                    - Storybook은 독립적으로 UI component와 page를 구축하기 위한 프론트엔드 workshop 이다.
+            - Why Storybook?
+            - Frameworks
+                - Next.js
+                - React & Webpack
+        - Testing
 - Tutorials
+    - 간단한 컴포넌트 
+        - 간단한 컴포넌트 만들기
+            - 설정하기
+                - 먼저 Task 컴포넌트와 그에 해당하는 스토리 파일을 만들어 보자. src/components/Task.js와 src/components/Task.stories.js을 생성하자.
 
+                - src/components/Task.js
+                ```
+                    import React from 'react';
+
+                    export default function Task({ task: { id, title, state }, onArchiveTask, onPinTask }) {
+                      return (
+                        <div className="list-item">
+                          <input type="text" value={title} readOnly={true} />
+                        </div>
+                      );
+                    }
+
+                ```
+
+                - src/components/Task.stories.js
+                ```
+                    import React from 'react';
+
+                    import Task from './Task';
+
+                    export default {
+                      component: Task,
+                      title: 'Task',
+                    };
+
+                    const Template = (args) => <Task {...args} />;
+
+                    export const Default = Template.bind({});
+                    Default.args = {
+                      task: {
+                        id: '1',
+                        title: 'Test Task',
+                        state: 'TASK_INBOX',
+                        updatedAt: new Date(2021, 0, 1, 9, 0),
+                      },
+                    };
+
+                    export const Pinned = Template.bind({});
+                    Pinned.args = {
+                      task: {
+                        ...Default.args.task,
+                        state: 'TASK_PINNED',
+                      },
+                    };
+
+                    export const Archived = Template.bind({});
+                    Archived.args = {
+                      task: {
+                        ...Default.args.task,
+                        state: 'TASK_ARCHIVED',
+                      },
+                    };
+                ```
+
+            - 환경설정
+                - .storybook/main.js
+                ```
+                    module.exports = {
+                    - stories: [
+                    -   '../src/**/*.stories.mdx',
+                    -   '../src/**/*.stories.@(js|jsx|ts|tsx)'
+                    - ],
+                    + stories: ['../src/components/**/*.stories.js'],
+                      staticDirs: ['../public'],
+                      addons: [
+                        '@storybook/addon-links',
+                        '@storybook/addon-essentials',
+                        '@storybook/preset-create-react-app',
+                        '@storybook/addon-interactions',
+                      ],
+                      features: {
+                        postcss: false,
+                      },
+                      framework: '@storybook/react',
+                      core: {
+                        builder: 'webpack4',
+                      },
+                    };
+                ```
+
+                - .storybook/preview.js
+                ```
+                    import '../src/index.css';
+
+                    //👇 Configures Storybook to log the actions( onArchiveTask and onPinTask ) in the UI.
+                    export const parameters = {
+                      actions: { argTypesRegex: '^on[A-Z].*' },
+                      controls: {
+                        matchers: {
+                          color: /(background|color)$/i,
+                          date: /Date$/,
+                        },
+                      },
+                    };
+                ```
+            - 상태(States) 구현하기
+                - src/components/Task.js
+                ```
+                    import React from 'react';
+
+                    export default function Task({ task: { id, title, state }, onArchiveTask, onPinTask }) {
+                      return (
+                        <div className={`list-item ${state}`}>
+                          <label className="checkbox">
+                            <input
+                              type="checkbox"
+                              defaultChecked={state === 'TASK_ARCHIVED'}
+                              disabled={true}
+                              name="checked"
+                            />
+                            <span
+                              className="checkbox-custom"
+                              onClick={() => onArchiveTask(id)}
+                              id={`archiveTask-${id}`}
+                              aria-label={`archiveTask-${id}`}
+                            />
+                          </label>
+                          <div className="title">
+                            <input type="text" value={title} readOnly={true} placeholder="Input title" />
+                          </div>
+
+                          <div className="actions" onClick={event => event.stopPropagation()}>
+                            {state !== 'TASK_ARCHIVED' && (
+                              // eslint-disable-next-line jsx-a11y/anchor-is-valid
+                              <a onClick={() => onPinTask(id)}>
+                                <span className={`icon-star`} id={`pinTask-${id}`} aria-label={`pinTask-${id}`} />
+                              </a>
+                            )}
+                          </div>
+                        </div>
+                      );
+                    }
+                ```
+
+            - 데이터 요구 사항 명시하기
+                - src/components/Task.js
+                ```
+                    import React from 'react';
+                    + import PropTypes from 'prop-types';
+
+                    export default function Task({ task: { id, title, state }, onArchiveTask, onPinTask }) {
+                      // ...
+                    }
+
+                    + Task.propTypes = {
+                    +  /** Composition of the task */
+                    +  task: PropTypes.shape({
+                    +    /** Id of the task */
+                    +    id: PropTypes.string.isRequired,
+                    +    /** Title of the task */
+                    +    title: PropTypes.string.isRequired,
+                    +    /** Current state of the task */
+                    +    state: PropTypes.string.isRequired,
+                    +  }),
+                    +  /** Event to change the task to archived */
+                    +  onArchiveTask: PropTypes.func,
+                    +  /** Event to change the task to pinned */
+                    +  onPinTask: PropTypes.func,
+                    + };
+                ```
 <hr />
